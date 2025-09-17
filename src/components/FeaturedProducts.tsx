@@ -1,65 +1,14 @@
 import { ProductCard } from "./ProductCard";
 import { Button } from "@/components/ui/button";
+import { artisansData } from "@/data/artisans";
 
-import basketImage from "@/assets/product-basket.jpg";
-import journalImage from "@/assets/product-journal.jpg";
-import cuttingBoardImage from "@/assets/product-cutting-board.jpg";
-import glassVaseImage from "@/assets/product-glass-vase.jpg";
-import ceramicMugImage from "@/assets/product-ceramic-mug.jpg";
-import heroImage from "@/assets/hero-pottery.jpg";
-
-const mockProducts = [
-  {
-    id: "1",
-    title: "Handwoven Natural Fiber Basket",
-    artisan: "Maria Santos",
-    price: 74,
-    image: basketImage,
-    category: "Textiles",
-    isNew: true,
-  },
-  {
-    id: "2", 
-    title: "Embossed Leather Journal",
-    artisan: "David Rodriguez",
-    price: 54,
-    image: journalImage,
-    category: "Leather",
-  },
-  {
-    id: "3",
-    title: "Artisan Pottery Vase",
-    artisan: "Elena Vasquez",
-    price: 89,
-    image: heroImage,
-    category: "Pottery",
-    isNew: true,
-  },
-  {
-    id: "4",
-    title: "Olive Wood Cutting Board",
-    artisan: "Giuseppe Romano",
-    price: 65,
-    image: cuttingBoardImage,
-    category: "Woodwork",
-  },
-  {
-    id: "5",
-    title: "Hand-blown Glass Vase",
-    artisan: "Claire Dubois",
-    price: 125,
-    image: glassVaseImage,
-    category: "Glasswork",
-  },
-  {
-    id: "6",
-    title: "Ceramic Coffee Mug",
-    artisan: "Yuki Tanaka",
-    price: 32,
-    image: ceramicMugImage,
-    category: "Pottery",
-  },
-];
+// Get all products from all artisans
+const allProducts = artisansData.flatMap(artisan => 
+  artisan.products.map(product => ({
+    ...product,
+    artisan: artisan.name
+  }))
+);
 
 export const FeaturedProducts = () => {
   return (
@@ -76,7 +25,7 @@ export const FeaturedProducts = () => {
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {mockProducts.map((product) => (
+          {allProducts.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
         </div>

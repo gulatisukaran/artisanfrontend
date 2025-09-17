@@ -1,5 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
+import { getArtisanByName } from "@/data/artisans";
 
 interface ProductCardProps {
   id: string;
@@ -19,8 +21,20 @@ export const ProductCard = ({
   category, 
   isNew = false 
 }: ProductCardProps) => {
+  const navigate = useNavigate();
+  
+  const handleCardClick = () => {
+    const artisanData = getArtisanByName(artisan);
+    if (artisanData) {
+      navigate(`/artisan/${artisanData.id}`);
+    }
+  };
+
   return (
-    <Card className="group overflow-hidden border-0 bg-card shadow-sm hover:shadow-card-hover transition-all duration-300 hover:scale-105">
+    <Card 
+      className="group overflow-hidden border-0 bg-card shadow-sm hover:shadow-card-hover transition-all duration-300 hover:scale-105 cursor-pointer"
+      onClick={handleCardClick}
+    >
       <div className="aspect-square overflow-hidden">
         <img 
           src={image} 
