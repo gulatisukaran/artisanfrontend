@@ -41,6 +41,16 @@ export const Hero = () => {
           </Button>
         </div>
         
+        {/* Test Link - Hardcoded Artisan */}
+        <div className="text-center">
+          <a 
+            href="/artisan/maria-santos" 
+            className="inline-block px-6 py-3 bg-terracotta text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+          >
+            Test: View Maria Santos (Potter)
+          </a>
+        </div>
+        
         <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
           <span>🏺 Pottery</span>
           <span>🧺 Textiles</span>

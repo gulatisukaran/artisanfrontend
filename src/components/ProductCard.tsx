@@ -24,9 +24,19 @@ export const ProductCard = ({
   const navigate = useNavigate();
   
   const handleCardClick = () => {
+    console.log("Product card clicked, artisan:", artisan);
     const artisanData = getArtisanByName(artisan);
+    console.log("Found artisan data:", artisanData);
+    
     if (artisanData) {
+      console.log("Navigating to:", `/artisan/${artisanData.id}`);
       navigate(`/artisan/${artisanData.id}`);
+    } else {
+      console.error("No artisan data found for:", artisan);
+      // Fallback navigation
+      if (artisan === "Maria Santos") navigate("/artisan/maria-santos");
+      else if (artisan === "David Rodriguez") navigate("/artisan/david-rodriguez");
+      else if (artisan === "Elena Vasquez") navigate("/artisan/elena-vasquez");
     }
   };
 
