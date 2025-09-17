@@ -8,26 +8,44 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 35 40% 98%;
+    --foreground: 25 20% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 25 20% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 25 20% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 18 80% 55%;
+    --primary-foreground: 35 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 35 25% 92%;
+    --secondary-foreground: 25 20% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 35 25% 95%;
+    --muted-foreground: 25 10% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 25 100% 85%;
+    --accent-foreground: 25 20% 20%;
+
+    /* Artisan marketplace specific colors */
+    --terracotta: 18 80% 55%;
+    --terracotta-light: 25 100% 85%;
+    --clay: 25 60% 65%;
+    --cream: 35 40% 98%;
+    --warm-brown: 25 20% 35%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--terracotta)), hsl(var(--clay)));
+    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(var(--muted)));
+    
+    /* Shadows */
+    --shadow-artisan: 0 4px 20px hsl(var(--terracotta) / 0.15);
+    --shadow-card: 0 2px 12px hsl(var(--warm-brown) / 0.08);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -56,26 +74,41 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 25 20% 8%;
+    --foreground: 35 40% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 25 20% 10%;
+    --card-foreground: 35 40% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 25 20% 10%;
+    --popover-foreground: 35 40% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 18 80% 60%;
+    --primary-foreground: 25 20% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 25 10% 15%;
+    --secondary-foreground: 35 40% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 25 10% 15%;
+    --muted-foreground: 35 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 25 60% 25%;
+    --accent-foreground: 35 40% 95%;
+
+    /* Dark mode artisan colors */
+    --terracotta: 18 80% 60%;
+    --terracotta-light: 25 60% 35%;
+    --clay: 25 40% 45%;
+    --cream: 25 20% 8%;
+    --warm-brown: 35 40% 85%;
+    
+    /* Dark gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--terracotta)), hsl(var(--clay)));
+    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(var(--muted)));
+    
+    /* Dark shadows */
+    --shadow-artisan: 0 4px 20px hsl(var(--terracotta) / 0.25);
+    --shadow-card: 0 2px 12px hsl(0 0% 0% / 0.3);
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
