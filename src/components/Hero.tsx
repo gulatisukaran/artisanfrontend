@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-pottery.jpg";
 
 export const Hero = () => {
@@ -44,20 +45,12 @@ export const Hero = () => {
         
         {/* Test Link - Hardcoded Artisan */}
         <div className="text-center">
-          <a 
-            href="/artisan/maria-santos" 
+          <Link 
+            to="/artisans" 
             className="inline-block px-8 py-4 bg-gradient-sunset text-ivory rounded-xl hover:scale-105 transition-bounce shadow-artisan font-semibold"
           >
-            🪷 Meet Maria Santos - Master Potter
-          </a>
-        </div>
-        
-        <div className="flex flex-wrap justify-center gap-8 text-base text-burnt-umber font-medium">
-          <span className="flex items-center gap-2">🏺 <span className="text-saffron">Sacred Pottery</span></span>
-          <span className="flex items-center gap-2">🧵 <span className="text-marigold">Blessed Textiles</span></span>
-          <span className="flex items-center gap-2">📿 <span className="text-lotus-pink">Prayer Beads</span></span>
-          <span className="flex items-center gap-2">🪵 <span className="text-peacock-blue">Temple Woodwork</span></span>
-          <span className="flex items-center gap-2">✨ <span className="text-gold">Golden Crafts</span></span>
+            Browse Artisans
+          </Link>
         </div>
       </div>
     </section>
