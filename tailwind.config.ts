@@ -47,14 +47,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Artisan marketplace colors
-        terracotta: {
-          DEFAULT: "hsl(var(--terracotta))",
-          light: "hsl(var(--terracotta-light))",
-        },
-        clay: "hsl(var(--clay))",
-        cream: "hsl(var(--cream))",
-        "warm-brown": "hsl(var(--warm-brown))",
+        // Traditional artisan marketplace colors
+        saffron: "hsl(var(--saffron))",
+        "saffron-light": "hsl(var(--saffron-light))",
+        marigold: "hsl(var(--marigold))",
+        "lotus-pink": "hsl(var(--lotus-pink))",
+        "peacock-blue": "hsl(var(--peacock-blue))",
+        terracotta: "hsl(var(--terracotta))",
+        sandstone: "hsl(var(--sandstone))",
+        ivory: "hsl(var(--ivory))",
+        "burnt-umber": "hsl(var(--burnt-umber))",
+        gold: "hsl(var(--gold))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -116,6 +119,8 @@ export default {
       backgroundImage: {
         "gradient-hero": "var(--gradient-hero)",
         "gradient-card": "var(--gradient-card)",
+        "gradient-sunset": "var(--gradient-sunset)",
+        "gradient-temple": "var(--gradient-temple)",
       },
       boxShadow: {
         "artisan": "var(--shadow-artisan)",
@@ -123,6 +128,11 @@ export default {
       },
       transitionProperty: {
         "smooth": "var(--transition-smooth)",
+        "bounce": "var(--transition-bounce)",
+      },
+      fontFamily: {
+        'serif': ['Playfair Display', 'serif'],
+        'traditional': ['Noto Sans Devanagari', 'sans-serif'],
       },
     },
   },

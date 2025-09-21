@@ -42,37 +42,38 @@ export const ProductCard = ({
 
   return (
     <Card 
-      className="group overflow-hidden border-0 bg-card shadow-sm hover:shadow-card-hover transition-all duration-300 hover:scale-105 cursor-pointer"
+      className="group overflow-hidden bg-gradient-card shadow-warm hover:shadow-artisan transition-bounce duration-400 hover:scale-105 cursor-pointer border-gold/20"
       onClick={handleCardClick}
     >
-      <div className="aspect-square overflow-hidden">
+      <div className="aspect-square overflow-hidden relative">
         <img 
           src={image} 
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
+        <div className="absolute inset-0 bg-gradient-temple opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
       </div>
-      <CardContent className="p-4 space-y-2">
+      <CardContent className="p-5 space-y-3">
         <div className="flex items-start justify-between">
-          <div className="space-y-1">
-            <h3 className="font-medium text-foreground line-clamp-2 leading-tight">
+          <div className="space-y-2">
+            <h3 className="font-serif font-semibold text-burnt-umber line-clamp-2 leading-tight group-hover:text-saffron transition-colors">
               {title}
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-sandstone font-medium">
               by {artisan}
             </p>
           </div>
           {isNew && (
-            <Badge variant="secondary" className="bg-terracotta text-primary-foreground text-xs">
-              New
+            <Badge variant="secondary" className="bg-gradient-sunset text-ivory text-xs font-medium">
+              Sacred
             </Badge>
           )}
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-lg font-semibold text-primary">
+          <span className="text-xl font-bold text-saffron font-serif">
             ${price}
           </span>
-          <Badge variant="outline" className="text-xs border-muted">
+          <Badge variant="outline" className="text-xs border-gold text-burnt-umber bg-saffron-light">
             {category}
           </Badge>
         </div>

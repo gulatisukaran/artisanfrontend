@@ -8,44 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 35 40% 98%;
-    --foreground: 25 20% 20%;
+    --background: 45 55% 96%;
+    --foreground: 20 30% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 25 20% 20%;
+    --card: 45 35% 98%;
+    --card-foreground: 20 30% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 25 20% 20%;
+    --popover: 45 35% 98%;
+    --popover-foreground: 20 30% 15%;
 
-    --primary: 18 80% 55%;
-    --primary-foreground: 35 40% 98%;
+    --primary: 35 85% 45%;
+    --primary-foreground: 45 55% 96%;
 
-    --secondary: 35 25% 92%;
-    --secondary-foreground: 25 20% 20%;
+    --secondary: 40 40% 88%;
+    --secondary-foreground: 20 30% 15%;
 
-    --muted: 35 25% 95%;
-    --muted-foreground: 25 10% 55%;
+    --muted: 45 30% 92%;
+    --muted-foreground: 20 15% 50%;
 
-    --accent: 25 100% 85%;
-    --accent-foreground: 25 20% 20%;
+    --accent: 15 90% 75%;
+    --accent-foreground: 20 30% 15%;
 
-    /* Artisan marketplace specific colors */
-    --terracotta: 18 80% 55%;
-    --terracotta-light: 25 100% 85%;
-    --clay: 25 60% 65%;
-    --cream: 35 40% 98%;
-    --warm-brown: 25 20% 35%;
+    /* Traditional artisan marketplace colors */
+    --saffron: 35 85% 45%;
+    --saffron-light: 40 80% 85%;
+    --marigold: 45 95% 55%;
+    --lotus-pink: 340 65% 75%;
+    --peacock-blue: 195 85% 35%;
+    --terracotta: 15 75% 50%;
+    --sandstone: 40 45% 75%;
+    --ivory: 45 55% 96%;
+    --burnt-umber: 20 40% 25%;
+    --gold: 50 85% 65%;
     
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--terracotta)), hsl(var(--clay)));
-    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(var(--muted)));
+    /* Traditional gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--saffron)), hsl(var(--marigold)));
+    --gradient-card: linear-gradient(180deg, hsl(var(--ivory)), hsl(var(--saffron-light)));
+    --gradient-sunset: linear-gradient(45deg, hsl(var(--marigold)), hsl(var(--lotus-pink)));
+    --gradient-temple: linear-gradient(180deg, hsl(var(--gold)), hsl(var(--saffron)));
     
-    /* Shadows */
-    --shadow-artisan: 0 4px 20px hsl(var(--terracotta) / 0.15);
-    --shadow-card: 0 2px 12px hsl(var(--warm-brown) / 0.08);
+    /* Traditional shadows with warmth */
+    --shadow-artisan: 0 8px 25px hsl(var(--saffron) / 0.2);
+    --shadow-card: 0 4px 15px hsl(var(--burnt-umber) / 0.1);
+    --shadow-warm: 0 6px 20px hsl(var(--marigold) / 0.15);
     
-    /* Transitions */
+    /* Smooth transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -95,20 +104,28 @@ All colors MUST be HSL.
     --accent: 25 60% 25%;
     --accent-foreground: 35 40% 95%;
 
-    /* Dark mode artisan colors */
-    --terracotta: 18 80% 60%;
-    --terracotta-light: 25 60% 35%;
-    --clay: 25 40% 45%;
-    --cream: 25 20% 8%;
-    --warm-brown: 35 40% 85%;
+    /* Dark mode traditional artisan colors */
+    --saffron: 35 80% 55%;
+    --saffron-light: 35 50% 25%;
+    --marigold: 45 85% 45%;
+    --lotus-pink: 340 55% 55%;
+    --peacock-blue: 195 75% 45%;
+    --terracotta: 15 70% 55%;
+    --sandstone: 40 35% 45%;
+    --ivory: 25 20% 8%;
+    --burnt-umber: 35 40% 85%;
+    --gold: 50 75% 55%;
     
-    /* Dark gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--terracotta)), hsl(var(--clay)));
+    /* Dark traditional gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--saffron)), hsl(var(--marigold)));
     --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-sunset: linear-gradient(45deg, hsl(var(--marigold)), hsl(var(--lotus-pink)));
+    --gradient-temple: linear-gradient(180deg, hsl(var(--gold)), hsl(var(--saffron)));
     
-    /* Dark shadows */
-    --shadow-artisan: 0 4px 20px hsl(var(--terracotta) / 0.25);
-    --shadow-card: 0 2px 12px hsl(0 0% 0% / 0.3);
+    /* Dark traditional shadows */
+    --shadow-artisan: 0 8px 25px hsl(var(--saffron) / 0.3);
+    --shadow-card: 0 4px 15px hsl(0 0% 0% / 0.4);
+    --shadow-warm: 0 6px 20px hsl(var(--marigold) / 0.2);
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -134,5 +151,15 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+  
+  /* Traditional patterns and decorative elements */
+  .pattern-mandala {
+    background-image: radial-gradient(circle at 50% 50%, hsl(var(--gold) / 0.1) 0%, transparent 50%);
+  }
+  
+  .pattern-lotus {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f4a261' fill-opacity='0.05'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E");
   }
 }
