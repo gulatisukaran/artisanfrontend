@@ -29,8 +29,8 @@ export const Hero = () => {
             techniques, passed down through sacred lineages of master artisans who honor their heritage.
           </p>
         </div>
-        
-        <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+        {/* search 👇 */}
+        {/* <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-saffron h-5 w-5" />
             <Input 
@@ -41,7 +41,7 @@ export const Hero = () => {
           <Button size="lg" className="h-14 px-10 bg-gradient-temple hover:scale-105 transition-bounce text-ivory font-semibold rounded-xl shadow-warm">
             Begin Journey
           </Button>
-        </div>
+        </div> */}
         
         {/* Test Link - Hardcoded Artisan */}
         <div className="text-center">

@@ -8,21 +8,50 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Star, MessageCircle, Mail } from "lucide-react";
 
 const API_URL = "https://agentic-fastapi-app-950029052556.europe-west1.run.app/db/all";
+const MEDIA_API_BASE = "https://agentic-fastapi-app-950029052556.europe-west1.run.app/user";
 
 const ArtisansPage = () => {
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
   const [artisans, setArtisans] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [artisanImages, setArtisanImages] = useState<{ [userId: string]: string }>({});
 
   useEffect(() => {
     setLoading(true);
     fetch(API_URL)
       .then(res => res.json())
       .then(data => {
-        // The API returns { user_profiles: [...] }
-        setArtisans(Array.isArray(data.user_profiles) ? data.user_profiles : []);
+        const profiles = Array.isArray(data.user_profiles) ? data.user_profiles : [];
+        setArtisans(profiles);
         setLoading(false);
+        // Fetch images for each artisan
+        profiles.forEach((artisan: any) => {
+          const userId = artisan.user_id;
+          // Check localStorage first
+          const cached = localStorage.getItem(`artisan_image_${userId}`);
+          if (cached) {
+            setArtisanImages(prev => ({ ...prev, [userId]: cached }));
+          } else {
+            fetch(`${MEDIA_API_BASE}/${userId}/media`)
+              .then(res => res.json())
+              .then(media => {
+                if (media.items && media.items.length > 0 && media.items[0].edited_image_base64) {
+                  const imgData = `data:image/png;base64,${media.items[0].edited_image_base64}`;
+                  setArtisanImages(prev => ({ ...prev, [userId]: imgData }));
+                  localStorage.setItem(`artisan_image_${userId}`, imgData);
+                }
+                // Print all product IDs for this artisan
+                if (media.items && media.items.length > 0) {
+                  const productIds = media.items.map((item: any) => item.id);
+                  console.log(`Artisan ${userId} product IDs:`, productIds);
+                } else {
+                  console.log(`Artisan ${userId} has no products.`);
+                }
+              })
+              .catch(() => {});
+          }
+        });
       })
       .catch(() => setLoading(false));
   }, []);
@@ -90,14 +119,24 @@ const ArtisansPage = () => {
             {filteredArtisans.map((artisan) => (
               <Card 
                 key={artisan.user_id} 
-                className="group hover:shadow-artisan transition-all duration-300 hover:-translate-y-2 border-gold/20 bg-ivory/80 backdrop-blur-sm"
+                className="group hover:shadow-artisan transition-all duration-300 hover:-translate-y-2 border-gold/20 bg-ivory/80 backdrop-blur-sm cursor-pointer"
+                onClick={() => window.location.href = `/artisan/${artisan.user_id}`}
               >
                 <CardHeader className="p-0">
                   <div className="relative overflow-hidden rounded-t-lg">
-                    {/* No image in API, so use a placeholder or initials */}
-                    <div className="w-full h-64 flex items-center justify-center bg-sandstone text-5xl font-bold text-burnt-umber">
-                      {artisan.name?.[0] || "?"}
-                    </div>
+                    {/* Show artisan image if available, else placeholder */}
+                    {artisanImages[artisan.user_id] ? (
+                      <img
+                        src={artisanImages[artisan.user_id]}
+                        alt={artisan.name}
+                        className="w-full h-64 object-cover object-center"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-64 flex items-center justify-center bg-sandstone text-5xl font-bold text-burnt-umber">
+                        {artisan.name?.[0] || "?"}
+                      </div>
+                    )}
                   </div>
                 </CardHeader>
                 
@@ -140,7 +179,7 @@ const ArtisansPage = () => {
                       <span>{artisan.years_experience || "-"} yrs experience</span>
                     </div>
                     <span className="text-sm text-saffron font-medium">
-                      {artisan.price_range
+                      Price: {artisan.price_range
                         ? artisan.price_range.replace(/Rs\s?/gi, "₹ ")
                         : "-"}
                     </span>
